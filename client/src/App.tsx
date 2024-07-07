@@ -1,13 +1,15 @@
+import { Button } from "@/components/ui/button";
+
 function App() {
   return (
     <>
-      <div className="flex flex-col items-center justify-center min-h-screen">
-        <h1 className="text-3xl text-center font-bold">
-          Facebook Page Insights
-        </h1>
-        <button className=" font-semibold text-center border-4 border-black bg-slate-600">
-          Login with Facebook
-        </button>
+      <div className="flex items-center flex-col">
+        <Button
+          className="text-2xl font-bold border-4 border-black"
+          variant="outline"
+        >
+          Login Via Facebook
+        </Button>
       </div>
     </>
   );
