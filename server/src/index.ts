@@ -29,7 +29,6 @@ const sessionMiddleware = session({
   }),
 });
 
-// Apply session middleware before Passport
 app.use(sessionMiddleware);
 
 app.use(passport.initialize());

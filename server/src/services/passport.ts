@@ -24,17 +24,19 @@ passport.use(
       clientID: process.env.AUTH_FACEBOOK_ID!,
       clientSecret: process.env.AUTH_FACEBOOK_SECRET!,
       callbackURL: process.env.AUTH_FACEBOOK_CALLBACK_URL!,
-      profileFields: ["id", "displayName", "email"],
+      profileFields: ["id", "displayName", "email", "picture.type(large)"],
       passReqToCallback: true,
     },
     async (req, accessToken, refreshToken, profile, done) => {
+      console.log(profile);
       try {
-        let user = await User.findOne({ userid: profile.id });
+        let user = await User.findOne({ facebookId: profile.id });
         if (!user) {
           user = new User({
-            userid: profile.id,
+            facebookId: profile.id,
             username: profile.displayName,
             email: (profile.emails && profile.emails[0].value) || "",
+            profilePicUrl: profile.photos ? profile.photos[0].value : "",
           });
           await user.save();
         }
