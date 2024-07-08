@@ -3,6 +3,16 @@ import { SVGProps } from "react";
 import { JSX } from "react/jsx-runtime";
 
 export function LoginPage() {
+  const handleClick = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/");
+      const data = await response.json();
+      console.log(data);
+    } catch (err) {
+      console.log("error");
+    }
+  };
+
   return (
     <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-gradient-to-br from-white to-sky-200 px-4 py-12 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-md text-center">
@@ -16,7 +26,7 @@ export function LoginPage() {
           <Button
             variant="outline"
             className="flex w-full items-center justify-center gap-2 rounded-md bg-[#1877F2] px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-[#1877F2]/90 focus:outline-none focus:ring-2 focus:ring-[#1877F2] focus:ring-offset-2"
-            onClick={() => console.log("Button Clicked")}
+            onClick={handleClick}
           >
             <FacebookIcon className="h-5 w-5" />
             Login with Facebook

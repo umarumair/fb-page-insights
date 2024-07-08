@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json())
 
 app.get("/", (req: Request, res: Response) => {
-    res.send("hello world");
+    res.send({hello : "how"});
 }); 
 
 app.post("/user", async (req: Request, res: Response) => {
